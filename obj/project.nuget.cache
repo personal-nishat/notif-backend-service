@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "dDZRaYuIaVs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\t-nfatema\\OneDrive - Microsoft\\Desktop\\push-notif-old-og\\push_notif.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\lib.net.http.encryptedcontentencoding\\2.1.1\\lib.net.http.encryptedcontentencoding.2.1.1.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\lib.net.http.webpush\\3.3.1\\lib.net.http.webpush.3.3.1.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.17\\microsoft.aspnetcore.openapi.8.0.17.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.2\\swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
+    "C:\\Users\\t-nfatema\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.6.2\\swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512"
+  ],
+  "logs": []
+}
