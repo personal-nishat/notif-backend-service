@@ -10,7 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<List<Meeting>>();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<PushNotificationService>();
+builder.Services.AddSingleton<BreakNotificationService>();
 builder.Services.AddHostedService<NotificationScheduler>();
+builder.Services.AddHostedService<ImportantMeetingReminderService>();
 
 
 var app = builder.Build();

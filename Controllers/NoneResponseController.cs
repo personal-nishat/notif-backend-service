@@ -15,10 +15,19 @@ namespace push_notif.Controllers
             _notifier = notifier;
         }
 
+        private DateTime ConvertToIST(DateTime utcTime)
+        {
+            var istTimeZone = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+            return TimeZoneInfo.ConvertTimeFromUtc(utcTime, istTimeZone);
+        }
+
         [HttpPost]
         public async Task<IActionResult> NoneResponse([FromBody] Meeting meeting)
         {
-            var message = $"You haven't RSVPed for {meeting.MeetingId} which starts at {meeting.MeetingTime}";
+            // Convert meeting time to IST for display
+            var meetingTimeIST = ConvertToIST(meeting.MeetingStartTime);
+            var message = $"You haven't RSVPed for {meeting.MeetingId} which starts at {meetingTimeIST:dd/MM/yyyy hh:mm tt} IST";
+            
             await _notifier.SendCustomNotificationAsync(message);
             return Ok("NoneResponse notification sent.");
         }
