@@ -25,9 +25,9 @@ namespace push_notif.Services
                 try
                 {
                     var now = DateTime.UtcNow;
-                    var tenMinutesFromNow = now.AddMinutes(10);
-                    
                     var storedMeetings = MeetingController.GetAllStoredMeetings().ToList();
+                    
+                    Console.WriteLine($"NotificationScheduler checking {storedMeetings.Count} meetings at {now:HH:mm:ss}");
                     
                     foreach (var meeting in storedMeetings)
                     {
@@ -38,16 +38,18 @@ namespace push_notif.Services
                             continue;
                         }
 
-                        var timeDifference = Math.Abs((meeting.MeetingStartTime - tenMinutesFromNow).TotalMinutes);
+                        var minutesUntilMeeting = (meeting.MeetingStartTime - now).TotalMinutes;
                         
-                        if (timeDifference <= 1 && !_sentReminders.Contains(meeting.MeetingId))
+                        // Send reminder if meeting is 10 minutes or less away and haven't sent reminder yet
+                        if (minutesUntilMeeting <= 10 && minutesUntilMeeting > 0 && !_sentReminders.Contains(meeting.MeetingId))
                         {
-                            Console.WriteLine($"Sending 10-minute reminder for meeting: {meeting.MeetingId}");
+                            Console.WriteLine($"Sending reminder for meeting: {meeting.MeetingId} (starts in {minutesUntilMeeting:F1} minutes)");
                             await _notifier.SendNotificationAsync(meeting);
                             _sentReminders.Add(meeting.MeetingId);
                         }
                         
-                        if (meeting.MeetingStartTime <= now && _sentReminders.Contains(meeting.MeetingId))
+                        // Remove meeting from system after it has started
+                        if (meeting.MeetingStartTime <= now)
                         {
                             Console.WriteLine($"Meeting {meeting.MeetingId} has started. Removing from system...");
                             MeetingController.RemoveMeeting(meeting.MeetingId);
